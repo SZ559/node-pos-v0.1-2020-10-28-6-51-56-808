@@ -2,25 +2,6 @@
 //     console.log();
 //     return 'Hello World!';
 // };
-
-module.exports = function printReceipt(shoppingCart)
-{
-    let receipt = '***<store earning no money>Receipt ***\n';
-    let totalPrice = 0;
-    let itemsInShoppingCart = getItemsInShoppingCart(shoppingCart);
-    
-    for(let item in itemsInShoppingCart)
-    {
-        receipt = receipt + itemsInShoppingCart[item].toString();
-        totalPrice += Number(itemsInShoppingCart[item].getTotalPrice());
-    }
-
-    receipt = receipt + 
-    '----------------------\n' + 
-    'Total: ' + totalPrice.toFixed(2) + ' (yuan)\n' +
-    '**********************\n';
-    return receipt;
-}
 class ShoppingCartItem {
     constructor(name, unitPrice, unit) 
     { 
@@ -64,6 +45,25 @@ class ShoppingCartItem {
             return ' ' + this._unit;
         }
     }
+}
+
+module.exports = function printReceipt(shoppingCart)
+{
+    let receipt = '***<store earning no money>Receipt ***\n';
+    let totalPrice = 0;
+    let itemsInShoppingCart = getItemsInShoppingCart(shoppingCart);
+    
+    for(let item in itemsInShoppingCart)
+    {
+        receipt = receipt + itemsInShoppingCart[item].toString();
+        totalPrice += Number(itemsInShoppingCart[item].getTotalPrice());
+    }
+
+    receipt = receipt + 
+    '----------------------\n' + 
+    'Total: ' + totalPrice.toFixed(2) + ' (yuan)\n' +
+    '**********************\n';
+    return receipt;
 }
 
 function getItemsInShoppingCart(shoppingCart)
