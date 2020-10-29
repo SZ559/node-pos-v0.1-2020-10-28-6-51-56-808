@@ -63,6 +63,7 @@ module.exports = function printReceipt(shoppingCart)
     '----------------------\n' + 
     'Total: ' + totalPrice.toFixed(2) + ' (yuan)\n' +
     '**********************\n';
+    console.log(receipt);
     return receipt;
 }
 
